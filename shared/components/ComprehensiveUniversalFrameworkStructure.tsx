@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { ChevronRight, ChevronDown, Folder, File, Code, Database, Server, Globe, Brain, Settings, FileText, Smartphone, Laptop, Cloud, Watch, Tv, Home, Beaker } from 'lucide-react'
+import { ChevronRight, ChevronDown, Folder, File, Cog, Boxes, Layers, Share2, Settings, Terminal, FileText, TestTube, GitBranch, Beaker } from 'lucide-react'
 
 type TreeItem = {
   name: string;
@@ -11,131 +11,102 @@ type TreeItem = {
 
 const structure: TreeItem[] = [
   { name: "universal-framework", icon: Folder, children: [
-    { name: "core", icon: Folder, children: [
-      { name: "auth", icon: Folder, children: [
-        { name: "services", icon: Folder },
+    { name: "core", icon: Cog, children: [
+      { name: "api", icon: Folder, children: [
         { name: "middleware", icon: Folder },
         { name: "models", icon: Folder },
+        { name: "services", icon: Folder },
+      ]},
+      { name: "auth", icon: Folder, children: [
+        { name: "middleware", icon: Folder },
+        { name: "models", icon: Folder },
+        { name: "services", icon: Folder },
       ]},
       { name: "database", icon: Folder, children: [
-        { name: "migrations", icon: Folder },
-        { name: "seeds", icon: Folder },
-        { name: "models", icon: Folder },
-      ]},
-      { name: "api", icon: Folder, children: [
-        { name: "routes", icon: Folder },
-        { name: "controllers", icon: Folder },
         { name: "middleware", icon: Folder },
+        { name: "models", icon: Folder },
+        { name: "services", icon: Folder },
       ]},
-      { name: "utils", icon: Folder },
+      { name: "utils", icon: Folder, children: [
+        { name: "middleware", icon: Folder },
+        { name: "models", icon: Folder },
+        { name: "services", icon: Folder },
+      ]},
     ]},
-    { name: "modules", icon: Folder, children: [
+    { name: "modules", icon: Boxes, children: [
       { name: "nexus", icon: Folder, children: [
         { name: "frontend", icon: Folder, children: [
-          { name: "src", icon: Folder, children: [
-            { name: "components", icon: Folder },
-            { name: "pages", icon: Folder },
-            { name: "styles", icon: Folder },
-            { name: "hooks", icon: Folder },
-            { name: "context", icon: Folder },
-            { name: "types", icon: Folder },
-          ]},
-          { name: "public", icon: Folder },
-          { name: "tests", icon: Folder },
-          { name: "package.json", icon: File },
-          { name: "tsconfig.json", icon: File },
-          { name: "next.config.js", icon: File },
+          { name: "src", icon: Folder },
         ]},
         { name: "backend", icon: Folder, children: [
-          { name: "src", icon: Folder, children: [
-            { name: "api", icon: Folder },
-            { name: "config", icon: Folder },
-            { name: "controllers", icon: Folder },
-            { name: "middleware", icon: Folder },
-            { name: "models", icon: Folder },
-            { name: "routes", icon: Folder },
-            { name: "services", icon: Folder },
-            { name: "utils", icon: Folder },
-          ]},
-          { name: "tests", icon: Folder },
-          { name: "package.json", icon: File },
-          { name: "tsconfig.json", icon: File },
+          { name: "src", icon: Folder },
         ]},
         { name: "ios", icon: Folder, children: [
-          { name: "Nexus", icon: Folder },
-          { name: "NexusTests", icon: Folder },
-          { name: "NexusUITests", icon: Folder },
           { name: "Nexus.xcodeproj", icon: File },
         ]},
         { name: "shared", icon: Folder, children: [
+          { name: "constants", icon: Folder },
           { name: "types", icon: Folder },
           { name: "utils", icon: Folder },
-          { name: "constants", icon: Folder },
         ]},
-        { name: "docs", icon: Folder },
-        { name: "scripts", icon: Folder },
+        { name: "middleware", icon: Folder },
+        { name: "ai", icon: Folder },
         { name: "config", icon: Folder },
       ]},
       { name: "bear-project", icon: Folder, children: [
-        { name: "src", icon: Folder },
+        { name: "src", icon: Folder, children: [
+          { name: "BearComponent.tsx", icon: File },
+        ]},
         { name: "tests", icon: Folder },
         { name: "docs", icon: Folder },
-        { name: "config", icon: Folder },
+        { name: "README.md", icon: File },
       ]},
-      { name: "berjak-project", icon: Folder, children: [
-        { name: "src", icon: Folder },
-        { name: "tests", icon: Folder },
-        { name: "docs", icon: Folder },
-        { name: "config", icon: Folder },
-      ]},
-      { name: "tata-ai", icon: Folder, children: [
-        { name: "src", icon: Folder },
-        { name: "tests", icon: Folder },
-        { name: "docs", icon: Folder },
-        { name: "config", icon: Folder },
-      ]},
+      { name: "berjak-project", icon: Folder },
+      { name: "tata-ai", icon: Folder },
       { name: "cloud-management", icon: Folder, children: [
-        { name: "provisioning", icon: Folder },
         { name: "monitoring", icon: Folder },
+        { name: "provisioning", icon: Folder },
         { name: "scaling", icon: Folder },
         { name: "security", icon: Folder },
       ]},
     ]},
-    { name: "platforms", icon: Folder, children: [
-      { name: "web", icon: Globe, children: [
+    { name: "platforms", icon: Layers, children: [
+      { name: "web", icon: Folder, children: [
         { name: "react", icon: Folder },
         { name: "vue", icon: Folder },
       ]},
-      { name: "mobile", icon: Smartphone, children: [
+      { name: "mobile", icon: Folder, children: [
         { name: "ios", icon: Folder },
         { name: "android", icon: Folder },
         { name: "react-native", icon: Folder },
         { name: "flutter", icon: Folder },
       ]},
-      { name: "desktop", icon: Laptop, children: [
+      { name: "desktop", icon: Folder, children: [
         { name: "macos", icon: Folder },
         { name: "windows", icon: Folder },
         { name: "linux", icon: Folder },
         { name: "electron", icon: Folder },
       ]},
-      { name: "wearables", icon: Watch, children: [
+      { name: "wearables", icon: Folder, children: [
         { name: "watchos", icon: Folder },
         { name: "wear-os", icon: Folder },
         { name: "tizen", icon: Folder },
       ]},
-      { name: "tv", icon: Tv, children: [
+      { name: "tv", icon: Folder, children: [
         { name: "tvos", icon: Folder },
         { name: "android-tv", icon: Folder },
         { name: "tizen-tv", icon: Folder },
       ]},
-      { name: "smart-devices", icon: Home, children: [
+      { name: "smart-devices", icon: Folder, children: [
         { name: "homekit", icon: Folder },
         { name: "google-home", icon: Folder },
         { name: "alexa", icon: Folder },
       ]},
     ]},
-    { name: "shared", icon: Folder, children: [
-      { name: "components", icon: Folder },
+    { name: "shared", icon: Share2, children: [
+      { name: "components", icon: Folder, children: [
+        { name: "ComprehensiveUniversalFrameworkStructure.tsx", icon: File },
+      ]},
       { name: "styles", icon: Folder },
       { name: "types", icon: Folder },
       { name: "constants", icon: Folder },
@@ -144,15 +115,16 @@ const structure: TreeItem[] = [
     { name: "playground", icon: Beaker, children: [
       { name: "experimental-components", icon: Folder },
       { name: "feature-prototypes", icon: Folder },
+      { name: "README.md", icon: File },
     ]},
-    { name: "config", icon: Folder, children: [
+    { name: "config", icon: Settings, children: [
       { name: "environment.json", icon: File },
       { name: "versions.json", icon: File },
       { name: "database.json", icon: File },
       { name: "api.json", icon: File },
       { name: "cloud.json", icon: File },
     ]},
-    { name: "scripts", icon: Folder, children: [
+    { name: "scripts", icon: Terminal, children: [
       { name: "build.js", icon: File },
       { name: "deploy.js", icon: File },
       { name: "update-versions.js", icon: File },
@@ -160,7 +132,7 @@ const structure: TreeItem[] = [
       { name: "test-runner.js", icon: File },
       { name: "cloud-provision.js", icon: File },
     ]},
-    { name: "docs", icon: Folder, children: [
+    { name: "docs", icon: FileText, children: [
       { name: "architecture", icon: Folder },
       { name: "api", icon: Folder },
       { name: "deployment", icon: Folder },
@@ -170,15 +142,19 @@ const structure: TreeItem[] = [
       { name: "platforms", icon: Folder },
       { name: "cloud-management", icon: Folder },
     ]},
-    { name: "tests", icon: Folder, children: [
-      { name: "unit", icon: Folder },
+    { name: "tests", icon: TestTube, children: [
+      { name: "unit", icon: Folder, children: [
+        { name: "Nexus", icon: Folder, children: [
+          { name: "tests_unit_nexus_header.test.ts", icon: File },
+        ]},
+      ]},
       { name: "integration", icon: Folder },
       { name: "e2e", icon: Folder },
       { name: "performance", icon: Folder },
       { name: "security", icon: Folder },
       { name: "platform-specific", icon: Folder },
     ]},
-    { name: "ci-cd", icon: Folder, children: [
+    { name: "ci-cd", icon: GitBranch, children: [
       { name: "pipelines", icon: Folder },
       { name: "docker", icon: Folder },
       { name: "kubernetes", icon: Folder },
@@ -231,7 +207,7 @@ export default function ComprehensiveUniversalFrameworkStructure() {
     <Card className="w-full max-w-2xl">
       <CardHeader>
         <CardTitle>Comprehensive Universal Framework Structure</CardTitle>
-        <CardDescription>Detailed visualization of the framework structure, including all layers and the playground area</CardDescription>
+        <CardDescription>Detailed visualization of the updated framework structure with universal icons for key folders</CardDescription>
       </CardHeader>
       <CardContent>
         <ul className="pl-4">
