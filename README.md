@@ -16,12 +16,27 @@ This is a comprehensive, cross-platform development framework designed to suppor
 
 ## Getting Started
 
-[Add instructions for setting up and running the project]
+1. Clone the repository
+2. Install dependencies: \`npm install\`
+3. Set up environment variables
+4. Run the development server: \`npm run dev\`
+
+## Available Scripts
+
+- \`npm run dev\`: Start the development server
+- \`npm run build\`: Build the project for production
+- \`npm run test\`: Run the test suite
+- \`npm run deploy\`: Deploy the project (configure as needed)
 
 ## Contributing
 
-[Add guidelines for contributing to the project]
+1. Fork the repository
+2. Create your feature branch: \`git checkout -b feature/my-new-feature\`
+3. Commit your changes: \`git commit -am 'Add some feature'\`
+4. Push to the branch: \`git push origin feature/my-new-feature\`
+5. Submit a pull request
 
 ## License
 
-[Specify the license under which this framework is released]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+EOF
