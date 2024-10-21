@@ -11,3 +11,4 @@ echo "
 # Swift Package Manager
 .build/
 " >> .gitignore
+node_modules
