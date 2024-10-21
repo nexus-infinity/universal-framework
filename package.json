@@ -15,6 +15,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest"
+    "test:watch": "jest --watch",
+    "test:e2e": "cypress open", // Example if using Cypress
+    "test:coverage": "jest --coverage"
   },
   "keywords": [],
   "author": "",

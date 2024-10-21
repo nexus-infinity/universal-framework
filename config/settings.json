@@ -1,0 +1,4 @@
+{
+  "requiredTests": ["lint", "test", "build"],
+  "enforceHooks": true
+}
