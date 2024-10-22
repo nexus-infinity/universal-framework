@@ -13,3 +13,4 @@ echo "
 " >> .gitignore
 node_modules
 .next/
+modules/nexus/frontend/tsconfig.tsbuildinfo
