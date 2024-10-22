@@ -1,7 +1,7 @@
 {
   "name": "universal-framework",
   "version": "1.0.0",
-  "description": "Nexus is a modular and flexible platform designed for various applications. This README provides an overview of the project structure and guidelines for development.",
+  "description": "Nexus is a modular and flexible platform designed for various applications.",
   "main": "index.js",
   "directories": {
     "doc": "docs",
@@ -14,9 +14,9 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "test": "jest"
+    "test": "jest",
     "test:watch": "jest --watch",
-    "test:e2e": "cypress open", // Example if using Cypress
+    "test:e2e": "cypress open",
     "test:coverage": "jest --coverage"
   },
   "keywords": [],
@@ -28,7 +28,7 @@
     "react-dom": "^18.3.1"
   },
   "devDependencies": {
-    "@storybook/nextjs": "^7.0.14",
+    "@storybook/nextjs": "^7.5.0",
     "jest": "^29.7.0"
   }
 }

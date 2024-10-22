@@ -1,20 +1,18 @@
 {
   "compilerOptions": {
-    // ... other options
     "baseUrl": ".",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ]
+      "@/*": ["./src/*"],
+      "@components/*": ["./src/components/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@utils/*": ["./src/utils/*"]
     },
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "allowJs": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,  // Keep if using JS, otherwise remove
     "skipLibCheck": true,
-    "strict": false,
+    "strict": true,  // Enable strict mode for better type safety
+    "noImplicitAny": true,  // Optional, but good for catching untyped variables
+    "strictNullChecks": true,  // Optional, for better null type safety
     "noEmit": true,
     "incremental": true,
     "module": "esnext",
@@ -29,7 +27,5 @@
     "**/*.ts",
     "**/*.tsx"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }
