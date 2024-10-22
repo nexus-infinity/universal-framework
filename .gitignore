@@ -12,3 +12,4 @@ echo "
 .build/
 " >> .gitignore
 node_modules
+.next/
