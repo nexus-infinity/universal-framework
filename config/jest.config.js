@@ -1,18 +1,29 @@
-const path = require('path');
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-module.exports = {
-  rootDir: path.join(__dirname, '..'),
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export default {
+  rootDir: path.resolve(__dirname, '..'),
   testEnvironment: 'jsdom',
-  roots: ['<rootDir>/tests'],
-  testMatch: ['**/*.test.js', '**/*.spec.js'],
-  collectCoverage: true,
-  coverageDirectory: '<rootDir>/coverage',
-  coverageReporters: ['text', 'lcov'],
-  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
-  moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/src/$1',
-  },
   transform: {
     '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { configFile: './config/babel.config.js' }],
   },
+  moduleNameMapper: {
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@modules/(.*)$': '<rootDir>/modules/$1',
+    '^@platforms/(.*)$': '<rootDir>/platforms/$1',
+    '^@shared/(.*)$': '<rootDir>/shared/$1',
+  },
+  moduleDirectories: ['node_modules', 'src', 'modules', 'shared'],
+  testMatch: [
+    '<rootDir>/tests/**/*.test.(js|jsx|ts|tsx)',
+    '<rootDir>/modules/**/tests/**/*.test.(js|jsx|ts|tsx)',
+    '<rootDir>/platforms/**/tests/**/*.test.(js|jsx|ts|tsx)',
+  ],
+  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
+  transformIgnorePatterns: [
+    '/node_modules/(?!(@tata-ai)/)',
+  ],
+  extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
 };

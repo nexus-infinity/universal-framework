@@ -1,4 +1,7 @@
 {
   "requiredTests": ["lint", "test", "build"],
-  "enforceHooks": true
+  "enforceHooks": {
+    "pre-commit": true,
+    "pre-push": true
+  }
 }

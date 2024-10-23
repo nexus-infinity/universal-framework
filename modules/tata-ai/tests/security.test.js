@@ -1,7 +1,7 @@
-import { escapeHTML } from '@modules/tata-ai/src/utils/security';
+import { escapeHTML } from '../src/utils/security';
 
 test('Escapes HTML to prevent XSS', () => {
   const maliciousInput = '<script>alert("XSS")</script>';
   const escapedOutput = escapeHTML(maliciousInput);
-  expect(escapedOutput).not.toContain('<script>');
+  expect(escapedOutput).toBe('&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;');
 });

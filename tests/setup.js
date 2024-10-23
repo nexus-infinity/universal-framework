@@ -1,10 +1,3 @@
-import '@testing-library/jest-dom/extend-expect';
+import '@testing-library/jest-dom';
 
-// Mock window for platform-specific tests
-if (typeof window === 'undefined') {
-  global.window = {
-    innerWidth: 1024,
-    innerHeight: 768,
-    dispatchEvent: jest.fn(),
-  };
-}
+// Add any global test setup here
