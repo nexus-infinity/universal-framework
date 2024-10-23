@@ -1,34 +1,22 @@
 {
   "name": "universal-framework",
   "version": "1.0.0",
-  "description": "Nexus is a modular and flexible platform designed for various applications.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
-  },
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
+    "start": "node src/index.js",
     "test": "jest",
-    "test:watch": "jest --watch",
-    "test:e2e": "cypress open",
-    "test:coverage": "jest --coverage"
+    "lint": "eslint .",
+    "ai-init": "node scripts/ai-init.js",
+    "ai-review": "node scripts/ai-review.js",
+    "ai-test": "node scripts/ai-test.js",
+    "ai-docs": "node scripts/ai-docs.js",
+    "ai-optimize": "node scripts/ai-optimize.js",
+    "ai-security": "node scripts/ai-security.js",
+    "ai-update": "node scripts/ai-update.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
-    "next": "^14.2.15",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "openai": "^4.0.0"
   },
   "devDependencies": {
-    "@storybook/nextjs": "^7.5.0",
-    "jest": "^29.7.0"
+    "dotenv": "^10.0.0"
   }
 }

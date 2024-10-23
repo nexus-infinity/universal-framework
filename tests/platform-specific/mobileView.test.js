@@ -1,8 +1,15 @@
-// tests/platform-specific/mobileView.test.js
-test('Displays correctly on mobile', () => {
-  global.innerWidth = 320; // Mock mobile width
-  window.dispatchEvent(new Event('resize'));
-  // Check for mobile-specific UI rendering
-  const mobileMenu = screen.getByTestId('mobile-menu');
-  expect(mobileMenu).toBeInTheDocument();
+import { render, screen } from '@testing-library/react';
+import MobileView from '@/components/MobileView';
+
+describe('Mobile View', () => {
+  beforeAll(() => {
+    window.innerWidth = 320;
+    window.dispatchEvent(new Event('resize'));
+  });
+
+  test('Displays correctly on mobile', () => {
+    render(<MobileView />);
+    const mobileMenu = screen.getByTestId('mobile-menu');
+    expect(mobileMenu).toBeInTheDocument();
+  });
 });
