@@ -25,5 +25,5 @@ export default {
   transformIgnorePatterns: [
     '/node_modules/(?!(@tata-ai)/)',
   ],
-  extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
+  extensionsToTreatAsEsm: ['.js', '.jsx', '.ts', '.tsx'],
 };
