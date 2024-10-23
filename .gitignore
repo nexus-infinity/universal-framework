@@ -14,3 +14,4 @@ echo "
 node_modules
 .next/
 modules/nexus/frontend/tsconfig.tsbuildinfo
+**/.DS_Store
