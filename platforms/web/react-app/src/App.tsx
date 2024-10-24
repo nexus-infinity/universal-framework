@@ -1,46 +1,75 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Home from './pages/Home';
-import About from './pages/About';
-import ProjectStructure from './components/ProjectStructure';
+import React, { useState } from 'react'
+import Button from '../../../../shared/components/Button'
+import { Bell, Settings, User } from 'lucide-react'
 
-function App() {
+const App: React.FC = () => {
+  const [sidebarOpen, setSidebarOpen] = useState(true)
+
+  const toggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen)
+  }
+
   return (
-    <Router>
-      <div className="min-h-screen bg-gray-100">
-        <nav className="bg-white shadow-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between h-16">
-              <div className="flex">
-                <div className="flex-shrink-0 flex items-center">
-                  <span className="font-bold text-xl text-gray-800">Universal Framework</span>
-                </div>
-                <div className="ml-6 flex space-x-8">
-                  <Link to="/" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                    Home
-                  </Link>
-                  <Link to="/about" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                    About
-                  </Link>
-                  <Link to="/structure" className="text-gray-900 hover:bg-gray-50 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">
-                    Project Structure
-                  </Link>
-                </div>
-              </div>
+    <div className="flex h-screen bg-gray-100">
+      {/* Sidebar */}
+      <aside
+        className={`bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } transition duration-200 ease-in-out md:relative md:translate-x-0`}
+      >
+        <nav>
+          <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+            Dashboard
+          </a>
+          <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+            Projects
+          </a>
+          <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+            Tasks
+          </a>
+          <a href="#" className="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+            Calendar
+          </a>
+        </nav>
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex-1 flex flex-col overflow-hidden">
+        {/* Header */}
+        <header className="bg-white shadow-md p-4">
+          <div className="flex items-center justify-between">
+            <Button label={sidebarOpen ? 'Close Sidebar' : 'Open Sidebar'} onClick={toggleSidebar} variant="secondary" />
+            <h1 className="text-2xl font-semibold">Universal Framework Web App</h1>
+            <div className="flex items-center space-x-4">
+              <Button label="" onClick={() => console.log('Notifications')} variant="icon">
+                <Bell className="h-5 w-5" />
+              </Button>
+              <Button label="" onClick={() => console.log('Settings')} variant="icon">
+                <Settings className="h-5 w-5" />
+              </Button>
+              <Button label="" onClick={() => console.log('Profile')} variant="icon">
+                <User className="h-5 w-5" />
+              </Button>
             </div>
           </div>
-        </nav>
+        </header>
 
-        <main className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/structure" element={<ProjectStructure />} />
-          </Routes>
+        {/* Main content area */}
+        <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 p-6">
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-4">Welcome to Your Dashboard</h2>
+            <p className="mb-4">This is where you'll see an overview of your projects and tasks.</p>
+            <Button label="Create New Project" onClick={() => console.log('Create New Project')} variant="primary" />
+          </div>
         </main>
+
+        {/* Footer */}
+        <footer className="bg-white shadow-md p-4 mt-auto">
+          <p className="text-center text-gray-600">© 2024 Universal Framework. All rights reserved.</p>
+        </footer>
       </div>
-    </Router>
-  );
+    </div>
+  )
 }
 
-export default App;
+export default App
