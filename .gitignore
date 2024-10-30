@@ -21,3 +21,6 @@ modules/nexus/frontend/tsconfig.tsbuildinfo
 .env
 .DS_Store
 .DS_Store
+.vscode/
+bear_gemini.sh
+nexus_set_and_cleanup.sh
