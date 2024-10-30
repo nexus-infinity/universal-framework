@@ -17,3 +17,7 @@ modules/nexus/frontend/tsconfig.tsbuildinfo
 **/.DS_Store
 .env
 .env
+.env
+.env
+.DS_Store
+.DS_Store
