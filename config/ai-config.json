@@ -1,7 +1,7 @@
 {
   "version": "1.0.0",
   "model": "gpt-4",
-  "maxTokens": 2048,
+  "maxTokens": 4096,
   "temperature": 0.7,
   "codeReview": {
     "enabled": true,
@@ -17,7 +17,7 @@
   },
   "optimization": {
     "enabled": true,
-    "targetMetrics": ["performance", "accessibility", "bestPractices"]
+    "targetMetrics": ["performance", "accessibility", "bestpractices"]
   },
   "security": {
     "enabled": true,

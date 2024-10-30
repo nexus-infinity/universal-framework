@@ -25,30 +25,27 @@ check_and_fix_structure() {
 
 # Function to verify file contents and make amendments if needed
 verify_and_fix_file() {
-  local file_path=$1
-  local expected_content=$2
-  local description=$3
-  
-  echo "Checking contents of $description at $file_path..." | tee -a $LOG_FILE
-  
-  if [ -f "$file_path" ]; then
-    current_content=$(cat "$file_path")
-    
-    if [ "$current_content" != "$expected_content" ]; then
-      echo "$description at $file_path is not as expected. Amending it now..." | tee -a $LOG_FILE
-      echo "$expected_content" > "$file_path"
-      echo "$description amended at $file_path." | tee -a $LOG_FILE
-      echo "$description: Amended" >> $REPORT_FILE
+    local file_path=$1
+    local expected_content=$2
+    local description=$3
+    echo "Checking contents of $description at $file_path..." | tee -a $LOG_FILE
+    if [ -f "$file_path" ]; then
+        current_content=$(cat "$file_path")
+        if [ "$current_content" != "$expected_content" ]; then
+            echo "$description at $file_path is not as expected. Amending it now..." | tee -a $LOG_FILE
+            echo "$expected_content" > "$file_path"
+            echo "$description amended at $file_path." | tee -a $LOG_FILE
+            echo "$description: Amended" >> $REPORT_FILE
+        else
+            echo "$description at $file_path is correct. No action needed." | tee -a $LOG_FILE
+            echo "$description: Correct" >> $REPORT_FILE
+        fi
     else
-      echo "$description at $file_path is correct. No action needed." | tee -a $LOG_FILE
-      echo "$description: Correct" >> $REPORT_FILE
+        echo "$description is missing. Logging and creating it now..." | tee -a $LOG_FILE
+        echo "$expected_content" > "$file_path"
+        echo "$description created at $file_path." | tee -a $LOG_FILE
+        echo "$description: Created" >> $REPORT_FILE
     fi
-  else
-    echo "$description is missing. Logging and creating it now..." | tee -a $LOG_FILE
-    echo "$expected_content" > "$file_path"
-    echo "$description created at $file_path." | tee -a $LOG_FILE
-    echo "$description: Created" >> $REPORT_FILE
-  fi
 }
 
 # Reset or create the report file for each run

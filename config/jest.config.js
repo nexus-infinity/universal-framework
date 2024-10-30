@@ -1,13 +1,16 @@
 module.exports = {
   preset: 'ts-jest',
   transform: {
-    '^.+\.(ts|tsx)$': 'ts-jest',
-    '^.+\.(js|jsx)$': 'babel-jest'
+    '^.+\\.[tj]sx?$': 'babel-jest',
   },
+  testEnvironment: 'jsdom',
   moduleNameMapper: {
-    '^@/(.*)$': '<rootDir>/',
-    '^@modules/(.*)$': '<rootDir>/modules/'
+    '^@/(.*)$': '<rootDir>/src/$1',
+    '^@components/(.*)$': '<rootDir>/src/components/$1', // Added for resolving custom component paths
+    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1', // Added for resolving custom hook paths
   },
-  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
-  roots: ['<rootDir>/modules', '<rootDir>/tests'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'], // Ensure setup file is referenced
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'], // Ensure compatibility with both TypeScript and JavaScript
+  coverageDirectory: '<rootDir>/coverage', // Add coverage reporting
+  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx,js,jsx}'], // Define which files to include in coverage
 };
