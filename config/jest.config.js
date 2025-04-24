@@ -1,29 +1,16 @@
-import path from 'path';
-import { fileURLToPath } from 'url';
-
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
-
-export default {
-  rootDir: path.resolve(__dirname, '..'),
-  testEnvironment: 'jsdom',
+module.exports = {
+  preset: 'ts-jest',
   transform: {
-    '^.+\\.(js|jsx|ts|tsx)$': ['babel-jest', { configFile: './config/babel.config.js' }],
+    '^.+\\.[tj]sx?$': 'babel-jest',
   },
+  testEnvironment: 'jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    '^@modules/(.*)$': '<rootDir>/modules/$1',
-    '^@platforms/(.*)$': '<rootDir>/platforms/$1',
-    '^@shared/(.*)$': '<rootDir>/shared/$1',
+    '^@components/(.*)$': '<rootDir>/src/components/$1', // Added for resolving custom component paths
+    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1', // Added for resolving custom hook paths
   },
-  moduleDirectories: ['node_modules', 'src', 'modules', 'shared'],
-  testMatch: [
-    '<rootDir>/tests/**/*.test.(js|jsx|ts|tsx)',
-    '<rootDir>/modules/**/tests/**/*.test.(js|jsx|ts|tsx)',
-    '<rootDir>/platforms/**/tests/**/*.test.(js|jsx|ts|tsx)',
-  ],
-  setupFilesAfterEnv: ['<rootDir>/tests/setup.js'],
-  transformIgnorePatterns: [
-    '/node_modules/(?!(@tata-ai)/)',
-  ],
-  extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
+  setupFilesAfterEnv: ['<rootDir>/config/jest.setup.js'], // Ensure setup file is referenced
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'], // Ensure compatibility with both TypeScript and JavaScript
+  coverageDirectory: '<rootDir>/coverage', // Add coverage reporting
+  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx,js,jsx}'], // Define which files to include in coverage
 };

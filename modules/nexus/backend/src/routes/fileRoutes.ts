@@ -1,13 +1,13 @@
-import express from 'express'
+import express, { Request } from 'express'
 import multer from 'multer'
 import * as fileService from '../services/fileService'
 import * as aiService from '../services/aiService'
 import * as dbService from '../services/dbService'
+import { File as MulterFile } from 'multer'
 
 const router = express.Router()
 const upload = multer({ storage: multer.memoryStorage() })
-
-router.post('/upload', upload.single('file'), async (req, res) => {
+router.post('/upload', upload.single('file'), async (req: Request & { file?: MulterFile }, res) => {
   try {
     const file = req.file
     if (!file) {
